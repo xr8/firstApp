@@ -3,12 +3,13 @@ const colors  = require('colors');
 const express = require('express');
 const morgan  = require('morgan');
 
-    //require
-    const myRoutes = require('./routes/myroutes.js');
-    
 // initializing the app
 const app     = express();
 
+    //require
+    const myRoutes = require('./routes/myroutes.js');
+    const myApi    = require('./routes/myapi.js');
+    
 app.set('appName','Tech xr8');
 app.set('views', __dirname+'\\views');
 app.set('view engine', 'ejs');
@@ -33,7 +34,13 @@ app.use(morgan('dev'));
 
         //Router
         app.use(myRoutes);
+        app.use('/api',myApi);
 
+        // the main route of our app
+        app.get('*', (req, res) => {
+          res.send('error 404 - not found file');
+        });
+      
 // bootstraping the app
 app.listen(3000, () => {
   console.log('|----------------------------------|'.red);
