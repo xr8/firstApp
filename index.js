@@ -1,4 +1,5 @@
 // installed on node_modules folder
+const colors = require('colors');
 const express = require('express');
 
 // initializing the app
@@ -11,5 +12,5 @@ app.get('/', (req, res) => {
 
 // bootstraping the app
 app.listen(3000, () => {
-  console.log('Express app started on port 3000');
+  console.log('Express app started on port 3000'.random);
 });
