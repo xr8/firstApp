@@ -9,7 +9,9 @@ const app     = express();
     //require
     const myRoutes = require('./routes/myroutes.js');
     const myApi    = require('./routes/myapi.js');
-    
+
+// settings
+app.set('port', process.env.PORT || 3000);    
 app.set('appName','Tech xr8');
 app.set('views', __dirname+'\\views');
 app.set('view engine', 'ejs');
@@ -41,8 +43,8 @@ app.use(morgan('dev'));
           res.send('error 404 - not found file');
         });
       
-// bootstraping the app
-app.listen(3000, () => {
+// star the serever
+const server = app.listen(app.get('port'), () => {
   console.log('|----------------------------------|'.red);
   console.log('|             '.red+app.get('appName')+'             |'.red);
   console.log('|----------------------------------|'.red);
