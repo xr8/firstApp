@@ -3,6 +3,9 @@ const colors  = require('colors');
 const express = require('express');
 const morgan  = require('morgan');
 
+    //require
+    const myRoutes = require('./routes/myroutes.js');
+    
 // initializing the app
 const app     = express();
 
@@ -28,20 +31,8 @@ app.use((req, res, next) => {
 //Update
 app.use(morgan('dev'));
 
-// the main route of our app
-app.get('/', (req, res) => {
-    res.render('index.ejs');
-});
-
-// the main route of our app
-app.get('/login', (req, res) => {
-    res.send('Aqui va el login');
-});
-
-// the main route of our app
-app.get('*', (req, res) => {
-    res.send('error 404 - not found file');
-});
+        //Router
+        app.use(myRoutes);
 
 // bootstraping the app
 app.listen(3000, () => {
