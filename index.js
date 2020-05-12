@@ -4,6 +4,10 @@ const express = require('express');
 // initializing the app
 const app = express();
 
+// the main route of our app
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+  });
 
 // bootstraping the app
 app.listen(3000, () => {
