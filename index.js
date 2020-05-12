@@ -6,6 +6,10 @@ const morgan  = require('morgan');
 // initializing the app
 const app     = express();
 
+app.set('appName','Tech xr8');
+app.set('views', __dirname+'\\views');
+app.set('view engine', 'ejs');
+
 // middleware
 /*
   to write a middleware you simply
@@ -26,23 +30,23 @@ app.use(morgan('dev'));
 
 // the main route of our app
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.render('index.ejs');
 });
 
 // the main route of our app
 app.get('/login', (req, res) => {
-  res.send('Aqui va el login');
+    res.send('Aqui va el login');
 });
 
 // the main route of our app
 app.get('*', (req, res) => {
-  res.send('error 404 - not found file');
+    res.send('error 404 - not found file');
 });
 
 // bootstraping the app
 app.listen(3000, () => {
   console.log('|----------------------------------|'.red);
-  console.log('|            Tech Labs26           |'.red);
+  console.log('|             '.red+app.get('appName')+'             |'.red);
   console.log('|----------------------------------|'.red);
   console.log('....................................'.blue);
   console.log(': Express app started on port 3000 :'.blue);
