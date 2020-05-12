@@ -1,6 +1,7 @@
 // installed on node_modules folder
 const colors  = require('colors');
 const express = require('express');
+const morgan  = require('morgan');
 
 // initializing the app
 const app     = express();
@@ -12,11 +13,16 @@ const app     = express();
   for parameters: err, req, res
   next, is a callback to the next 
 */
+/*
 app.use((req, res, next) => {
   console.log(': Time: ', Date.now() + ' URL: ' + req.url);
   console.log('....................................'.white);
   next();
 });
+*/
+
+//Update
+app.use(morgan('dev'));
 
 // the main route of our app
 app.get('/', (req, res) => {
