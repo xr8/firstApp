@@ -12,7 +12,7 @@ const app     = express();
 
 // settings
 app.set('port', process.env.PORT || 3000);    
-app.set('appName','Tech xr8');
+app.set('appName','Tech Labs26');
 app.set('views', __dirname+'\\views');
 app.set('view engine', 'ejs');
 
@@ -46,7 +46,7 @@ app.use(morgan('dev'));
 // star the serever
 const server = app.listen(app.get('port'), () => {
   console.log('|----------------------------------|'.red);
-  console.log('|             '.red+app.get('appName')+'             |'.red);
+  console.log('|           '.red+app.get('appName')+'            |'.red);
   console.log('|----------------------------------|'.red);
   console.log('....................................'.blue);
   console.log(': Express app started on port 3000 :'.blue);
