@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 
         // the main route of our app
         router.get('/', (req, res) => {
@@ -10,10 +10,4 @@ const router = express.Router();
         router.get('/login', (req, res) => {
             res.render('login.ejs');
         });
-
-        // the main route of our app
-        router.get('*', (req, res) => {
-            res.send('error 404 - not found file');
-        });
-        
         module.exports = router
