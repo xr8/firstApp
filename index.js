@@ -16,8 +16,7 @@ const socket  = require('socket.io');
       //const chat    = require('./routes/chat.js');
 
       //variables de entorno NODE_PORT
-      //app.set('port', process.env.PORT  || 80);
-      app.set('port', 80);    
+      app.set('port', process.env.PORT  || 3000);    
       app.set('appName','Tech Labs26');
       app.set('views', __dirname + '\\views');
       
