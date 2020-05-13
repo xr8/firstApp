@@ -19,7 +19,7 @@ const socket  = require('socket.io');
       //app.set('port', process.env.PORT  || 3000);    
       app.set('port', process.env.PORT);     
       app.set('appName','Tech Labs26');
-      app.set('views', __dirname + '\\views');
+      app.set('views', __dirname + '/views');
       
 
       app.set('view engine', 'ejs');
