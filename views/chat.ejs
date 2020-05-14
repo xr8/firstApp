@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>EJS CHAT</title>
+    <link rel="stylesheet" href="./public/style.css">
+</head>
+<body>
+    <h1>EJS Chat</h1>
+    
+    <%- include('partials/navigation.ejs'); -%>
+
+    <div id="chat-container">
+        <div id="chat-window">
+          <div id="output"></div>
+          <div id="actions"></div>
+        </div>
+        <!-- user and message -->
+        <input id="username" type="text" placeholder="username">
+        <input id="message" type="text" placeholder="message">
+        
+        <button type="button" id="send">Mandar</button>
+      </div>
+
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="./public/chat.js"></script>    
+</body>
+</html>
