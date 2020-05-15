@@ -24,8 +24,23 @@ btn.addEventListener('click', function() {
       <strong>${data.username}</strong>: ${data.message}
     </p>`
   });
-  
-  
-socket.on('chat:typing', function(data) {
+  socket.on('chat:typing', function(data) {
     actions.innerHTML =  `<p><em>${data} is typing a message...</em></p>`
   });
+
+/*
+  var x = document.getElementById("demo");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  
+  function showPosition(position) {
+    innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+  }
+  */

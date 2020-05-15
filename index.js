@@ -3,44 +3,37 @@ const path    = require('path');
 const express = require('express');
 const morgan  = require('morgan');
 const colors  = require('colors');
-
-const socket  = require('socket.io');
+const socketio = require('socket.io');
 
   // initializing the app
   const app     = express();
-  const socketio = require('socket.io');
-
+    
       //require
       const myRoutes = require('./routes/myroutes.js');
       const myApi    = require('./routes/myapi.js');
-      //const chat    = require('./routes/chat.js');
+      const myChat   = require('./routes/mychat.js');
 
       //variables de entorno NODE_PORT
-      app.set('port', process.env.PORT || process.env.NODE_PORT);    
+      app.set('port', process.env.PORT  || 3000);
       app.set('appName','Tech Labs26');
-      app.set('views', __dirname + '\\views');
-      
-
+      app.set('views', __dirname + '/views');
       app.set('view engine', 'ejs');
 
       // settings
-      //app.set(express.static())
-      app.use('/chat', express.static(__dirname + '/public'));
-    
+      app.use('/public', express.static(__dirname + '/public'));
 
       // middleware
       app.use(morgan('dev'));
 
           //Router
           app.use(myRoutes);
-          app.use('/api',myApi);
-          //app.use(chat);
+          app.use(myChat);
+          app.use(myApi);
 
-        //chat
-        app.get('/nel', (req, res) => {
-          res.send('Nel!');
-          
-        });
+          //chat
+          app.get('/nel', (req, res) => {
+            res.send('Nel!');
+          });
 
           // the main route of our app
           app.get('*', (req, res) => {
@@ -59,6 +52,7 @@ const socket  = require('socket.io');
 
             const io = socketio(server);
             io.on('connection', (socketio) => {
+
               console.log('socket connection opened:', socketio.id);
 
                 socketio.on('chat:message', (data) => {
@@ -69,5 +63,4 @@ const socket  = require('socket.io');
                 socketio.on('chat:typing', (data) => {
                   socketio.broadcast.emit('chat:typing', data);
                 });
-
-            });
+            });       
